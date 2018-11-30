@@ -73,20 +73,21 @@ Function Combine-PatchBuildNumbers($UnformattedVersionNumber) {
   if($MatchedGroups[6].Success -And $MatchedGroups[6].Length -gt 0) { $tmpMinor = $MatchedGroups[6].Value }
   if($MatchedGroups[7].Success -And $MatchedGroups[7].Length -gt 0) { $tmpPatch = $MatchedGroups[7].Value }
 
-  Write-Host "tmpMajor = $tmpMajor"
-  Write-Host "tmpMinor = $tmpMinor"
-  Write-Host "tmpPatch = $tmpPatch"
-  Write-Host "tmpBuild = $tmpBuild"
+  # Write-Host "tmpMajor = $tmpMajor"
+  # Write-Host "tmpMinor = $tmpMinor"
+  # Write-Host "tmpPatch = $tmpPatch"
+  # Write-Host "tmpBuild = $tmpBuild"
   
   if ($tmpBuild -gt 0) {
     #$new_tmpPatch = "{0:00}" -f $tmpPatch
     #$new_tmpBuild = "{0:000}" -f $tmpBuild
     $tmpPatchPadding = 3 - $tmpPatch.length
-    [string]$newtmpPatch = "{0:$tmpPatchPadding}" -f $tmpPatch
+    # Write-Host "tmpPatchPadding = $tmpPatchPadding"
+    [string]$newtmpPatch = "{0:D$($tmpPatchPadding)}" -f $tmpPatch
 
     $tmpBuildPadding = 4 - $tmpPatch.length
-    [string]$newtmpBuild = "{0:$tmpBuildPadding}" -f $tmpBuild
-    Write-Host "{0:$tmpBuildPadding}" -f $tmpBuild
+    [string]$newtmpBuild = "{0:D$($tmpBuildPadding)}" -f $tmpBuild
+    #"{0:D$tmpBuildPadding}" -f $tmpBuild
 
     Write-Host "newtmpPatch = $newtmpPatch"
     Write-Host "newtmpBuild = $newtmpBuild"
@@ -99,8 +100,10 @@ Function Combine-PatchBuildNumbers($UnformattedVersionNumber) {
     }
 
 
-    Write-Host "About to return $newPatchBuild"
-    return $newPatchBuild
+    Write-Host "About to use: $newPatchBuild"
+    $FinalVersionNumber = "$($tmpMajor).$($tmpMinor).$($newPatchBuild)"
+    Write-Host "About to return $FinalVersionNumber"
+    return $FinalVersionNumber
   }
   else {
     # Do nothing since this is a clean released Major.Minor.Patch build with no prerelease Build Number.
@@ -151,6 +154,7 @@ If ([string]::IsNullOrEmpty($VersionNumber)) {
 }
 
 if ($CombinePatchBuildNumbers) {
+  Write-Host "Combing the Path and Build Numbers."
   $VersionNumber = Combine-PatchBuildNumbers "$VersionNumber"
 } else {
   Write-Host "Combining the Patch and Build Numbers was skipped!"
