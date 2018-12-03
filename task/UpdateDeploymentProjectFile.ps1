@@ -17,7 +17,7 @@
   Purpose/Change: Initial script development
   
 .EXAMPLE
-  .\UpdateDeploymentProjectFile.ps1
+  .\UpdateDeploymentProjectFile.ps1 "Path_To_Deployment.btdfproj" "BuildNumber|Environment|GitVersion" "EnviornmentVariableName" $True|$False
 #>
 [cmdletBinding()]
 param(
