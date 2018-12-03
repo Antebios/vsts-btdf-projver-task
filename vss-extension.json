@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
-  "public": false,
+  "public": true,
   "id": "BTDFProjectUpdater",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "name": "BTDF Project Updater",
   "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
   "publisher": "MacrossPlusInc",
@@ -21,7 +21,9 @@
   "categories": ["Azure Pipelines", "Azure Artifacts"],
   "tags": [
     "BTDF",
-    "Version"
+    "BizTalk",
+    "Version",
+    "GitVersion"
   ],
 
   "content": {
