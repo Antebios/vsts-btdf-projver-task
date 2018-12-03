@@ -1,64 +1,61 @@
 {
   "manifestVersion": 1,
-  "id": "CookbookVersionReader",
-  "name": "Cookbook Version Reader",
-  "version": "1.0.1",
-  "publisher": "wkdmoore",
+  "public": false,
+  "id": "BTDFProjectUpdater",
+  "version": "0.1.0",
+  "name": "BTDF Project Updater",
+  "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
+  "publisher": "MacrossPlusInc",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "A build task that reads the version from the metadata.rb file and makes it available as build variables.",
-  "categories": [
-    "Build and release"
-  ],
-  "tags": [
-    "Chef",
-    "Version",
-    "Build Variables"
-  ],
   "icons": {
     "default": "images/extension-icon.png"
   },
-  "files": [
-    {
-      "path": "CookbookVersionReaderTask"
-    }
+  "scopes": [
+    "vso.build",
+    "vso.build_execute"
   ],
+  "categories": ["Azure Pipelines", "Azure Artifacts"],
+  "tags": [
+    "BTDF",
+    "Version",
+  ],
+
   "content": {
-    "details": {
-      "path": "readme.md"
-    },
-    "license": {
-      "path": "license"
-    }
+    "details": { "path": "overview.md" },
+    "license": { "path": "LICENSE" }
   },
   "links": {
-    "getstarted": {
-      "uri": "https://github.com/wamoore/CookbookVersionReaderTask"
-    },
-    "support": {
-      "uri": "https://github.com/wamoore/CookbookVersionReaderTask/Issues"
-    }
+    "repository": {"uri": "https://github.com/Antebios/vsts-btdf-projver-task"  },
+    "support": { "uri": "https://github.com/Antebios/vsts-btdf-projver-task/issues" }
   },
-  "repository": {
-    "type": "git",
-    "uri": "https://github.com/wamoore/CookbookVersionReaderTask"
-  },
-  "galleryFlags": [
-    "Public"
-  ],
+  "repository": { 
+    "type": "git", 
+    "uri": "https://github.com/Antebios/vsts-btdf-projver-task" 
+  }, 
   "contributions": [
     {
-      "id": "cookbook-version-reader-build-task",
+      "id": "btdf-project-updater-task",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "CookbookVersionReaderTask"
+        "name": "BTDFProjectUpdater"
       }
+    }
+  ],
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+
+      "path": "task"
     }
   ]
 }

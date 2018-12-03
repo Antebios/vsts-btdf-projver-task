@@ -1,6 +1,6 @@
 {
     "id": "658b2abe-dcdc-45d9-b4ed-4fbc8a863d6b",
-    "name": "BTDF Project Versioning",
+    "name": "BTDF Project Updater",
     "friendlyName": "BTDF Project File Versioning",
     "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
     "helpMarkDown": "",
