@@ -19,5 +19,3 @@ So, the versions cited before both become "1.2.30004".
 ## Why the padding of zeros?
 
 MSI Patch number has a limitiation value of 65,535, which is 5 characters long.  So I take the "3" and "4" and fill the remaining space with zeros.
-
-Icons made by [Those Icons](https://www.flaticon.com/authors/those-icons) from [Flaticon](https://www.flaticon.com/) licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
