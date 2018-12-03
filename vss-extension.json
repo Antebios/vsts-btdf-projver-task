@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "public": false,
   "id": "BTDFProjectUpdater",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "name": "BTDF Project Updater",
   "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
   "publisher": "MacrossPlusInc",

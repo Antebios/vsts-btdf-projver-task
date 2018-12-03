@@ -10,7 +10,7 @@ Your choice of version numbers can come from:
 * Environment Variable of your choice
 * GitVersion properties, specifically *MajorMinorPatch* and combines *CommitsSinceVersionSource*
 
-![BTDFProjVerForm](images/marketplace/btdfprojver-1)
+![BTDFProjVerForm](images/marketplace/btdfprojver-1.png)
 
 ## Why
 
