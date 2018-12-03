@@ -1,0 +1,25 @@
+<svg width="580" height="580" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="582" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse ry="287.500005" rx="287.500005" id="svg_1" cy="289.999983" cx="289.999992" stroke-width="1.5" fill="#56aaff"/>
+  <rect stroke="null" rx="20" id="svg_4" height="105.999997" width="315" y="53.824975" x="131.5" stroke-width="1.5" fill="#ff0000"/>
+  <rect rx="20" stroke="null" id="svg_3" height="401.000027" width="315" y="110.824966" x="131.5" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse ry="20" rx="20" id="svg_5" cy="82.825" cx="312.5" stroke-opacity="null" stroke-width="1.5" stroke="null" fill="#ffffff"/>
+  <ellipse ry="20" rx="20" id="svg_6" cy="82.825" cx="362.5" stroke-opacity="null" stroke-width="1.5" stroke="null" fill="#ffffff"/>
+  <ellipse ry="20" rx="20" id="svg_7" cy="82.825" cx="412.5" stroke-opacity="null" stroke-width="1.5" stroke="null" fill="#ffffff"/>
+  <rect stroke="null" id="svg_13" height="21.999919" width="314.99883" y="110.825659" x="131.500594" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <text stroke="null" transform="matrix(5.248901938577788,0,0,5.369391560108036,-600.2304198346569,-714.1041563223941) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_8" y="173.3012" x="137.754592" stroke-opacity="null" stroke-width="0" fill="#000000">BTDF</text>
+  <rect stroke="null" rx="15" id="svg_9" height="41" width="283.000011" y="250.824997" x="141.499989" stroke-opacity="null" stroke-width="1.5" fill="#ff0000"/>
+  <rect stroke="null" rx="15" id="svg_10" height="41" width="187.999994" y="302.824997" x="141.499987" stroke-opacity="null" stroke-width="1.5" fill="#ff0000"/>
+  <rect stroke="null" rx="15" id="svg_11" height="41" width="250.99999" y="357.824997" x="141.499988" stroke-opacity="null" stroke-width="1.5" fill="#ff0000"/>
+  <rect stroke="null" rx="15" id="svg_12" height="41" width="173.999996" y="416.824997" x="141.499987" stroke-opacity="null" stroke-width="1.5" fill="#ff0000"/>
+ </g>
+</svg>

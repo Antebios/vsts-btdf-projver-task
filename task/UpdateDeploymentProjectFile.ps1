@@ -17,7 +17,7 @@
   Purpose/Change: Initial script development
   
 .EXAMPLE
-  .\UpdateDeploymentProjectFile.ps1 "Path_To_Deployment.btdfproj" "BuildNumber|Environment|GitVersion" "EnviornmentVariableName" $True|$False
+  .\UpdateDeploymentProjectFile.ps1 "Path_To_Deployment.btdfproj" "BuildNumber|Environment|GitVersion" "EnviornmentVariableName | empty" "true | false"
 #>
 [cmdletBinding()]
 param(
@@ -28,8 +28,16 @@ param(
     [string]$MethodOfVersionNumber="GitVersion",
 
     [string]$VersionNumberEnvVar,
-    [boolean]$CombinePatchBuildNumbers=$true
+    $CombinePatchBuildNumbers="true"
 )
+
+Write-Host "**********************************************************************"
+Write-Host "** ProjectFile = $ProjectFile"
+Write-Host "** MethodOfVersionNumber = $MethodOfVersionNumber"
+Write-Host "** VersionNumberEnvVar = $VersionNumberEnvVar"
+Write-Host "** CombinePatchBuildNumbers = $CombinePatchBuildNumbers"
+Write-Host "**********************************************************************"
+
 
 # Method to extract Version Number
 # $MethodOfVersionNumber = Can be "GitVersion", "Environment", "BuildNumber", or "DateTime"
@@ -118,6 +126,7 @@ If ( $MethodOfVersionNumber -eq "BuildNumber" ) {
   }
 }
 elseif ( $MethodOfVersionNumber -eq "Environment" ) {
+  Write-Host "Examining the Environment Variable: $VersionNumberEnvVar"
   if (Test-Path env:$($VersionNumberEnvVar) ) { 
     $VersionNumber = (get-item env:$VersionNumberEnvVar).Value
   } 
@@ -148,7 +157,7 @@ If ([string]::IsNullOrEmpty($VersionNumber)) {
   Write-Host "Extracted Version Number: $($VersionNumber)"
 }
 
-if ($CombinePatchBuildNumbers) {
+if ($CombinePatchBuildNumbers -eq "true") {
   Write-Host "Combing the Patch and Build Numbers."
   $VersionNumber = Combine-PatchBuildNumbers "$VersionNumber"
 } else {
