@@ -72,26 +72,20 @@ Function Combine-PatchBuildNumbers($UnformattedVersionNumber) {
   if($MatchedGroups[5].Success -And $MatchedGroups[5].Length -gt 0) { $tmpMajor = $MatchedGroups[5].Value }
   if($MatchedGroups[6].Success -And $MatchedGroups[6].Length -gt 0) { $tmpMinor = $MatchedGroups[6].Value }
   if($MatchedGroups[7].Success -And $MatchedGroups[7].Length -gt 0) { $tmpPatch = $MatchedGroups[7].Value }
-
-  # Write-Host "tmpMajor = $tmpMajor"
-  # Write-Host "tmpMinor = $tmpMinor"
-  # Write-Host "tmpPatch = $tmpPatch"
-  # Write-Host "tmpBuild = $tmpBuild"
   
   if ($tmpBuild -gt 0) {
-    #$new_tmpPatch = "{0:00}" -f $tmpPatch
-    #$new_tmpBuild = "{0:000}" -f $tmpBuild
-    $tmpPatchPadding = 3 - $tmpPatch.length
-    # Write-Host "tmpPatchPadding = $tmpPatchPadding"
-    [string]$newtmpPatch = "{0:D$($tmpPatchPadding)}" -f $tmpPatch
-
-    $tmpBuildPadding = 4 - $tmpPatch.length
-    [string]$newtmpBuild = "{0:D$($tmpBuildPadding)}" -f $tmpBuild
+    Write-Host ""
+    [int]$tmpPatchPadding = 3 - $tmpPatch.length
+    Write-Host "About to add leading zeros to Patch Number: $tmpPatch"
+    $newtmpPatch = ([string]$tmpPatch).PadLeft($tmpPatchPadding,'0')
+    Write-Host "New Padded Patch Number = $newtmpPatch"
+    Write-Host ""
+    [int]$tmpBuildPadding = 4 - $tmpPatch.length
+    Write-Host "About to add leading zeros to Build Number: $tmpBuild"
+    [string]$newtmpBuild = ([string]$tmpBuild).PadLeft($tmpBuildPadding,'0')
     #"{0:D$tmpBuildPadding}" -f $tmpBuild
-
-    Write-Host "newtmpPatch = $newtmpPatch"
-    Write-Host "newtmpBuild = $newtmpBuild"
-
+    Write-Host "New Padded Build Number = $newtmpBuild"
+    Write-Host ""
     [string]$newPatchBuild = [string]$newtmpPatch + [string]$newtmpBuild
 
     if ($newPatchBuild -gt 65535) {
@@ -103,6 +97,7 @@ Function Combine-PatchBuildNumbers($UnformattedVersionNumber) {
     Write-Host "About to use: $newPatchBuild"
     $FinalVersionNumber = "$($tmpMajor).$($tmpMinor).$($newPatchBuild)"
     Write-Host "About to return $FinalVersionNumber"
+    Write-Host ""
     return $FinalVersionNumber
   }
   else {
@@ -154,7 +149,7 @@ If ([string]::IsNullOrEmpty($VersionNumber)) {
 }
 
 if ($CombinePatchBuildNumbers) {
-  Write-Host "Combing the Path and Build Numbers."
+  Write-Host "Combing the Patch and Build Numbers."
   $VersionNumber = Combine-PatchBuildNumbers "$VersionNumber"
 } else {
   Write-Host "Combining the Patch and Build Numbers was skipped!"
