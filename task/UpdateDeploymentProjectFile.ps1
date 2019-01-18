@@ -109,7 +109,7 @@ Function Combine-PatchBuildNumbers($UnformattedVersionNumber) {
     return $FinalVersionNumber
   }
   else {
-    # Do nothing since this is a clean released Major.Minor.Patch build with no prerelease Build Number.
+    Write-Host "Do nothing to the version number since this is a clean released Major.Minor.Patch build with no prerelease Build Number."
     return $UnformattedVersionNumber
   }
 }
@@ -139,9 +139,16 @@ elseif ( $MethodOfVersionNumber -eq "GitVersion" ) {
     Write-Host "Setting version to value stored in: GITVERSION_MAJORMINORPATCH"
     $VersionNumber =  $Env:GITVERSION_MAJORMINORPATCH
     Write-Host "Git Version Number to use: $VersionNumber"
-    if (-not ([string]::IsNullOrEmpty($Env:GITVERSION_COMMITSSINCEVERSIONSOURCE))) {
-      Write-Host "Setting version to value stored in: GITVERSION_MAJORMINORPATCH and GITVERSION_COMMITSSINCEVERSIONSOURCE"
-      $VersionNumber = "$($Env:GITVERSION_MAJORMINORPATCH)" + "." + "$($Env:GITVERSION_COMMITSSINCEVERSIONSOURCE)"
+
+    if($Env:GITVERSION_BRANCHNAME.StartsWith("tags/")) {
+      Write-Host "This is a tagged release, so only use GITVERSION_MAJORMINORPATCH."
+    } 
+    else { 
+      Write-Host "Thisis not a tagged release, so continue to modify the version number."
+      if (-not ([string]::IsNullOrEmpty($Env:GITVERSION_COMMITSSINCEVERSIONSOURCE))) {
+        Write-Host "Setting version to value stored in: GITVERSION_MAJORMINORPATCH and GITVERSION_COMMITSSINCEVERSIONSOURCE"
+        $VersionNumber = "$($Env:GITVERSION_MAJORMINORPATCH)" + "." + "$($Env:GITVERSION_COMMITSSINCEVERSIONSOURCE)"
+      }
     }
   }
 }
@@ -158,7 +165,7 @@ If ([string]::IsNullOrEmpty($VersionNumber)) {
 }
 
 if ($CombinePatchBuildNumbers -eq "true") {
-  Write-Host "Combing the Patch and Build Numbers."
+  Write-Host "Combining the Patch and Build Numbers."
   $VersionNumber = Combine-PatchBuildNumbers "$VersionNumber"
 } else {
   Write-Host "Combining the Patch and Build Numbers was skipped!"

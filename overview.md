@@ -21,3 +21,6 @@ So, the versions cited before both become "1.2.03004".
 ## Why the padding of zeros?
 
 MSI Patch number has a limitiation value of 65,535, which is 5 characters long.  So I take the "3" and "4" and fill the remaining space with zeros.
+
+## Update to 0.1.9
+When using GitVersion and tagging a release, the produced MSI should have a clean version "1.2.3", but instead is incorrectly being set to "1.2.3.4" where "4" is the pre-release or commits since last tagged.  But when using tags in conjunction with GitVersion this is deemed a "blessed" release artifact and should be reflected in the naming convention of the msi, thus no need for a fourth component to the version number.
